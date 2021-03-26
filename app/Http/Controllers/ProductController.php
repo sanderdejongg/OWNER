@@ -11,7 +11,9 @@ class ProductController extends Controller
 {
     public function index()
     {
-        return view('products.index');
+        $products = Product::all();
+
+        return view('products.index')->with('products', $products);
     }
 
     public function store(Request $request)

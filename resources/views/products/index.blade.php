@@ -11,29 +11,21 @@
         </style>
     </head>
     <body>
-        <h1>Current Products</h1>
+    <h1>Current Products</h1>
 
-        @if (\App\Product::all()->count())
-
-        <ul>
-            @foreach (\App\Product::all() as $product)
-            <li>
-                {!! $product->name !!}
-                <form action="/products/delete" method="POST">
-                    @method('DELETE')
-                    @csrf
-                    <input type="hidden" name="id" value="@php(print $product->id)"/>
-                    <button type="submit">delete</button>
-                </form>
-            </li>
-            @endforeach
-        </ul>
-
-        @else
-
-            <p><em>No products have been created yet.</em></p>
-
-        @endif
+    @forelse( $products as $product )
+        <li>
+            {!! $product->name !!}
+            <form action="/products/delete" method="POST">
+                @method('DELETE')
+                @csrf
+                <input type="hidden" name="id" value="{{ $product->id }}">
+                <button type="submit">delete</button>
+            </form>
+        </li>
+    @empty
+        <p><em>No products have been created yet.</em></p>
+    @endforelse
 
         @if (session('status'))
         <div class="alert-success">

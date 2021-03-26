@@ -7,12 +7,12 @@ Gelieve deze respository te klonen en je wijzigingen voor elk onderdeel vast te 
 
 ## Deel 1
 
-* Verbeter de routing die in de site wordt gebruikt.
-* Voeg validatie toe aan het nieuwe productproces en zorg ervoor dat de naam van het product uniek is.
+* -DONE- Verbeter de routing die in de site wordt gebruikt.
+* -DONE- Voeg validatie toe aan het nieuwe productproces en zorg ervoor dat de naam van het product uniek is.
 
 ## Deel 2
 
-* Los alle veiligheidsproblemen op die je opmerkt in de controller.
+* -DONE- Los alle veiligheidsproblemen op die je opmerkt in de controller.
 * Los eventuele beveiligingsproblemen op, bugs/verbeteringen aan de blade templates (maak je geen zorgen over de lay-out en styling).
 
 ## Deel 3

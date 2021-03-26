@@ -11,30 +11,23 @@
         </style>
     </head>
     <body>
-        <h1>Current Products</h1>
+    <h1>Current Products</h1>
 
-        <?php if(\App\Product::all()->count()): ?>
+    <?php $__empty_1 = true; $__currentLoopData = $products; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $product): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
+        <li>
+            <?php echo $product->name; ?>
 
-        <ul>
-            <?php $__currentLoopData = \App\Product::all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $product): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-            <li>
-                <?php echo $product->name; ?>
+            <form action="/products/delete" method="POST">
+                <?php echo method_field('DELETE'); ?>
+                <?php echo csrf_field(); ?>
 
-                <form action="/products/delete" method="POST">
-                    <?php echo method_field('DELETE'); ?>
-                    <?php echo csrf_field(); ?>
-                    <input type="hidden" name="id" value="<?php (print $product->id); ?>"/>
-                    <button type="submit">delete</button>
-                </form>
-            </li>
-            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-        </ul>
-
-        <?php else: ?>
-
-            <p><em>No products have been created yet.</em></p>
-
-        <?php endif; ?>
+                <input type="hidden" name="id" value="<?php echo e($product->id); ?>">
+                <button type="submit">delete</button>
+            </form>
+        </li>
+    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
+        <p><em>No products have been created yet.</em></p>
+    <?php endif; ?>
 
         <?php if(session('status')): ?>
         <div class="alert-success">
