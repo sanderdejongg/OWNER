@@ -4,7 +4,7 @@ namespace App\Service;
 
 interface ProductServiceInterface
 {
-    public function addProduct();
+    public function addProduct($request);
 
-    public function deleteProduct();
+    public function deleteProduct($request);
 }

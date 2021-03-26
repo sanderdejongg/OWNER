@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Product;
+use App\Service\ProductServiceInterface;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -16,26 +17,25 @@ class ProductController extends Controller
         return view('products.index')->with('products', $products);
     }
 
-    public function store(Request $request)
+    public function store(Request $request, ProductServiceInterface $productService)
     {
-        $request->validate([
-            'name'          => 'required|unique:products',
-            'description'   => 'required',
-        ]);
+        if ($productService->addProduct($request)){
+            $status = 'Product saved as: ' . $request->name;
+        } else{
+            $status = 'Something went wrong while creating product, please try again.';
+        }
 
-        $product = new Product();
-        $product->name = $request->name;
-        $product->description = $request->description;
-        $product->save();
-
-        return redirect('/products')->with('status', 'Product saved as: ' . $request->name);
+        return redirect('/products')->with('status', $status);
     }
 
-    public function delete(Request $request)
+    public function delete(Request $request, ProductServiceInterface $productService)
     {
+        if ($productService->deleteProduct($request)){
+            $status = 'Product succesfully deleted:';
+        } else{
+            $status = 'Something went wrong while deleting product, please try again.';
+        }
 
-          \App\Product::where('id', $request->id)->delete();
-
-        return redirect('/products')->with('status', 'Product was deleted');
+        return redirect('/products')->with('status', $status);
     }
 }

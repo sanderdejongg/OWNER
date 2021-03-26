@@ -19,11 +19,11 @@ Gelieve deze respository te klonen en je wijzigingen voor elk onderdeel vast te 
 
 Momenteel doet het veld "beschrijving" in het formulier niets.
 
-* Gelieve de producttabel te updaten om een "description" veld op te nemen, en het in te vullen vanuit dit formulier.
+* -DONE- Gelieve de producttabel te updaten om een "description" veld op te nemen, en het in te vullen vanuit dit formulier.
 
 ## Deel 4
 
-* Creëer een nieuwe Product Service Class (misschien in App/Service/Product) waarvan het de taak is om een product te beheren.
+* -DONE- Creëer een nieuwe Product Service Class (misschien in App/Service/Product) waarvan het de taak is om een product te beheren.
 Refactor de code zodat deze nieuwe class het werk doet voor new() en delete() in plaats van de controller.
 
 ## Deel 5
