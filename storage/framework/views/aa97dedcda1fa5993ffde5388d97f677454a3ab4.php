@@ -24,6 +24,7 @@
                 <?php echo $product->name; ?>
 
                 <form action="/products/delete" method="POST">
+                    <?php echo method_field('DELETE'); ?>
                     <?php echo csrf_field(); ?>
                     <input type="hidden" name="id" value="<?php (print $product->id); ?>"/>
                     <button type="submit">delete</button>
@@ -48,6 +49,7 @@
 
         <h2>New product</h2>
         <form action="/products/new" method="POST">
+            <?php echo method_field('PUT'); ?>
             <?php echo csrf_field(); ?>
             <input type="text" name="name" placeholder="name" /><br />
             <textarea name="description" placeholder="description"></textarea><br />

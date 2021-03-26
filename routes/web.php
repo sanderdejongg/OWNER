@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -12,8 +14,11 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', 'HomeController@index');
-Route::get('/products', 'ProductController@index');
-Route::post('/products/new', 'ProductController@new');
-Route::post('/products/delete', 'ProductController@delete');
+Route::get('/', [HomeController::class, 'index']);
+Route::group([
+    'prefix'    => 'products'
+], function (){
+    Route::get('/',  [ProductController::class, 'index']);
+    Route::put('/new',  [ProductController::class, 'new']);
+    Route::delete('/delete',  [ProductController::class, 'delete']);
+});
