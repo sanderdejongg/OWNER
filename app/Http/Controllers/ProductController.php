@@ -14,11 +14,15 @@ class ProductController extends Controller
         return view('products.index');
     }
 
-    public function new(Request $request)
+    public function store(Request $request)
     {
+        $request->validate([
+            'name'          => 'required|unique:products',
+        ]);
+
         DB::insert("INSERT INTO products (name) VALUES ('".$request->name."')");
 
-        return redirect('/products')->with('status', 'Product saved');
+        return redirect('/products')->with('status', 'Product saved as: ' . $request->name);
     }
 
     public function delete(Request $request)

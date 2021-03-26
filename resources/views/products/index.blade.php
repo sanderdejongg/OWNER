@@ -44,8 +44,17 @@
         @endif
 
 
+        <h2>New Product</h2>
 
-        <h2>New product</h2>
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
         <form action="/products/new" method="POST">
             @method('PUT')
             @csrf

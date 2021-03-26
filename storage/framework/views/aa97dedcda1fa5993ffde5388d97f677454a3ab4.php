@@ -46,8 +46,17 @@
         <?php endif; ?>
 
 
+        <h2>New Product</h2>
 
-        <h2>New product</h2>
+        <?php if($errors->any()): ?>
+            <div class="alert alert-danger">
+                <ul>
+                    <?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $error): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <li><?php echo e($error); ?></li>
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                </ul>
+            </div>
+        <?php endif; ?>
         <form action="/products/new" method="POST">
             <?php echo method_field('PUT'); ?>
             <?php echo csrf_field(); ?>

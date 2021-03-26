@@ -19,6 +19,6 @@ Route::group([
     'prefix'    => 'products'
 ], function (){
     Route::get('/',  [ProductController::class, 'index']);
-    Route::put('/new',  [ProductController::class, 'new']);
+    Route::put('/new',  [ProductController::class, 'store']);
     Route::delete('/delete',  [ProductController::class, 'delete']);
 });
