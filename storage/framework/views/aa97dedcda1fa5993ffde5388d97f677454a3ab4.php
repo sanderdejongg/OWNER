@@ -17,7 +17,7 @@
         <li>
             <?php echo $product->name; ?>
 
-            <form action="/products/delete" method="POST">
+            <form action="<?php echo e(route('products')); ?>" method="POST">
                 <?php echo method_field('DELETE'); ?>
                 <?php echo csrf_field(); ?>
                 <input type="hidden" name="id" value="<?php echo e($product->id); ?>">
@@ -46,7 +46,7 @@
             </div>
         <?php endif; ?>
 
-        <form action="/products/new" method="POST">
+        <form action="<?php echo e(route('products')); ?>" method="POST">
             <?php echo method_field('PUT'); ?>
             <?php echo csrf_field(); ?>
             <input type="text" name="name" placeholder="name" /><br />

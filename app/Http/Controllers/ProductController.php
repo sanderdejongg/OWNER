@@ -25,6 +25,7 @@ class ProductController extends Controller
 
         $product = new Product();
         $product->name = $request->name;
+        $product->description = $request->description;
         $product->save();
 
         return redirect('/products')->with('status', 'Product saved as: ' . $request->name);
