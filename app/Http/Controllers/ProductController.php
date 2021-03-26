@@ -20,6 +20,7 @@ class ProductController extends Controller
     {
         $request->validate([
             'name'          => 'required|unique:products',
+            'description'   => 'required',
         ]);
 
         $product = new Product();

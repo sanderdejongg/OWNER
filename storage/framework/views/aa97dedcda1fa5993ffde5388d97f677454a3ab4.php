@@ -20,7 +20,6 @@
             <form action="/products/delete" method="POST">
                 <?php echo method_field('DELETE'); ?>
                 <?php echo csrf_field(); ?>
-
                 <input type="hidden" name="id" value="<?php echo e($product->id); ?>">
                 <button type="submit">delete</button>
             </form>

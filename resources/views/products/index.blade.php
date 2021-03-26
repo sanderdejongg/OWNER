@@ -16,7 +16,7 @@
     @forelse( $products as $product )
         <li>
             {!! $product->name !!}
-            <form action="/products/delete" method="POST">
+            <form action="{{route('products'}}" method="POST">
                 @method('DELETE')
                 @csrf
                 <input type="hidden" name="id" value="{{ $product->id }}">
@@ -44,7 +44,7 @@
             </div>
         @endif
 
-        <form action="/products/new" method="POST">
+        <form action="{{route('products'}}" method="POST">
             @method('PUT')
             @csrf
             <input type="text" name="name" placeholder="name" /><br />

@@ -14,11 +14,11 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/', [HomeController::class, 'index']);
+Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::group([
     'prefix'    => 'products'
 ], function (){
-    Route::get('/',  [ProductController::class, 'index']);
+    Route::get('/',  [ProductController::class, 'index'])->name('products');
     Route::put('/new',  [ProductController::class, 'store']);
     Route::delete('/delete',  [ProductController::class, 'delete']);
 });

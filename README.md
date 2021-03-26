@@ -13,7 +13,7 @@ Gelieve deze respository te klonen en je wijzigingen voor elk onderdeel vast te 
 ## Deel 2
 
 * -DONE- Los alle veiligheidsproblemen op die je opmerkt in de controller.
-* Los eventuele beveiligingsproblemen op, bugs/verbeteringen aan de blade templates (maak je geen zorgen over de lay-out en styling).
+* -DONE- Los eventuele beveiligingsproblemen op, bugs/verbeteringen aan de blade templates (maak je geen zorgen over de lay-out en styling).
 
 ## Deel 3
 
