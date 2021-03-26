@@ -1,0 +1,5 @@
+1. Composer updated
+2. make new .env file
+3. generate key
+4. make db and migration
+5. route group for /product/ prefix
