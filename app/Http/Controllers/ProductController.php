@@ -20,14 +20,17 @@ class ProductController extends Controller
             'name'          => 'required|unique:products',
         ]);
 
-        DB::insert("INSERT INTO products (name) VALUES ('".$request->name."')");
+        $product = new Product();
+        $product->name = $request->name;
+        $product->save();
 
         return redirect('/products')->with('status', 'Product saved as: ' . $request->name);
     }
 
     public function delete(Request $request)
     {
-        DB::delete("DELETE FROM products WHERE id = ".$request->id);
+
+          \App\Product::where('id', $request->id)->delete();
 
         return redirect('/products')->with('status', 'Product was deleted');
     }

@@ -3,21 +3,18 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
         <title>Products</title>
-
         <style>
             .alert-success {
                 color: green;
             }
-
         </style>
     </head>
     <body>
-
         <h1>Current Products</h1>
 
         @if (\App\Product::all()->count())
+
         <ul>
             @foreach (\App\Product::all() as $product)
             <li>
@@ -31,11 +28,12 @@
             </li>
             @endforeach
         </ul>
+
         @else
+
             <p><em>No products have been created yet.</em></p>
+
         @endif
-
-
 
         @if (session('status'))
         <div class="alert-success">
@@ -43,9 +41,7 @@
         </div>
         @endif
 
-
         <h2>New Product</h2>
-
         @if ($errors->any())
             <div class="alert alert-danger">
                 <ul>
@@ -55,6 +51,7 @@
                 </ul>
             </div>
         @endif
+
         <form action="/products/new" method="POST">
             @method('PUT')
             @csrf
@@ -63,6 +60,5 @@
             <input type="text" name="tags" placeholder="tags" /><br />
             <button type="submit">Submit</button>
         </form>
-
     </body>
 </html>
