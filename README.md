@@ -30,10 +30,10 @@ Refactor de code zodat deze nieuwe class het werk doet voor new() en delete() in
 
 Momenteel doet het "tags" veld in het formulier niets. We willen graag tags aanmaken voor nieuwe producten:
 
-* Maak een nieuw Tag model, en een nieuwe pivot tabel om de producten te koppelen aan de Tags (many-to-many).
-* Neem de tags string wanneer het formulier wordt ingediend en splits deze op komma's.
-* Maak een tag aan voor elk van deze items - maar alleen als deze uniek is.
-* Koppel het product aan elk geselecteerde tag (of de tags nu nieuw waren of al eerder bestonden).
+* -DONE- Maak een nieuw Tag model, en een nieuwe pivot tabel om de producten te koppelen aan de Tags (many-to-many).
+* -DONE- Neem de tags string wanneer het formulier wordt ingediend en splits deze op komma's.
+* -DONE- Maak een tag aan voor elk van deze items - maar alleen als deze uniek is.
+* -DONE- Koppel het product aan elk geselecteerde tag (of de tags nu nieuw waren of al eerder bestonden).
 
 ## Deel 6
 

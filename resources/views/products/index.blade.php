@@ -4,31 +4,30 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Products</title>
-        <style>
-            .alert-success {
-                color: green;
-            }
-        </style>
+        <link href="dist/app.css" rel="stylesheet">
     </head>
     <body>
     <h1>Current Products</h1>
 
     @forelse( $products as $product )
-        <li>
-            {!! $product->name !!}
-            <br/>
-            {!! $product->description !!}
-            <br/>
-            @foreach ($product->tag as $singleTag)
-                <span class="label label-info label-many">{{ $singleTag->name }}</span>
-            @endforeach
-            <form action="/products/delete" method="POST">
-                @method('DELETE')
-                @csrf
-                <input type="hidden" name="id" value="{{ $product->id }}">
-                <button type="submit">delete</button>
-            </form>
-        </li>
+
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title">{!! $product->name !!}</h5>
+                <p class="card-text"> {!! $product->description !!}</p>
+                @foreach ($product->tag as $tag)
+                    <span class="badge rounded-pill bg-success">{{ $tag->name }}</span>
+                @endforeach
+                <br/>
+                <br/>
+                <form action="/products/delete" method="POST">
+                    @method('DELETE')
+                    @csrf
+                    <input type="hidden" name="id" value="{{ $product->id }}">
+                    <button type="submit" class="btn btn-danger">delete</button>
+                </form>
+            </div>
+        </div>
     @empty
         <p><em>No products have been created yet.</em></p>
     @endforelse
@@ -58,5 +57,6 @@
             <input type="text" name="tags" placeholder="tags" /><br />
             <button type="submit">Submit</button>
         </form>
+    <script src="dist/app.js" type="text/javascript"></script>
     </body>
 </html>
