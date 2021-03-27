@@ -27,7 +27,7 @@ class ProductController extends Controller
             $status = 'Something went wrong while creating product, please try again.';
         }
 
-//        return redirect('/products')->with('status', $status);
+        return redirect('/products')->with('status', $status);
     }
 
     public function delete(Request $request, ProductServiceInterface $productService)

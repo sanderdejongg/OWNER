@@ -35,7 +35,7 @@ class TagsService
 
     public function cleanUpTags($string){
 //        // remove first whitespace from string if it has a whitespace
-        if ( $string[0] === ' '){
+        if ( $string[0] == ' '){
             $string = ltrim($string, $string[0]);
         }
         return $string;
