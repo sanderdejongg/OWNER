@@ -17,6 +17,13 @@
         <li>
             <?php echo $product->name; ?>
 
+            <br/>
+            <?php echo $product->description; ?>
+
+            <br/>
+            <?php $__currentLoopData = $product->tag; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $singleTag): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                <span class="label label-info label-many"><?php echo e($singleTag->name); ?></span>
+            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
             <form action="/products/delete" method="POST">
                 <?php echo method_field('DELETE'); ?>
                 <?php echo csrf_field(); ?>

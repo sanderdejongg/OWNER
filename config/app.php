@@ -179,6 +179,7 @@ return [
          * Custom Service Providers...
          */
         App\Providers\ProductServiceProvider::class,
+        App\Providers\TagsServiceProvider::class,
 
     ],
 

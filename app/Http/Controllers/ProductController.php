@@ -4,15 +4,17 @@ namespace App\Http\Controllers;
 
 use App\Product;
 use App\Service\ProductServiceInterface;
+use App\Service\TagsServiceInterface;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class ProductController extends Controller
 {
-    public function index()
+    public function index(ProductServiceInterface $productService)
     {
-        $products = Product::all();
+        $products = $productService->showProduct();
+//        var_dump($products);
 
         return view('products.index')->with('products', $products);
     }
@@ -25,7 +27,7 @@ class ProductController extends Controller
             $status = 'Something went wrong while creating product, please try again.';
         }
 
-        return redirect('/products')->with('status', $status);
+//        return redirect('/products')->with('status', $status);
     }
 
     public function delete(Request $request, ProductServiceInterface $productService)

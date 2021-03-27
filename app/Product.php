@@ -25,5 +25,8 @@ class Product extends Model
      */
     private $description;
 
-
+    public function tag()
+    {
+        return $this->belongsToMany(tags::class, 'product_tags');
+    }
 }

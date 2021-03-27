@@ -16,6 +16,12 @@
     @forelse( $products as $product )
         <li>
             {!! $product->name !!}
+            <br/>
+            {!! $product->description !!}
+            <br/>
+            @foreach ($product->tag as $singleTag)
+                <span class="label label-info label-many">{{ $singleTag->name }}</span>
+            @endforeach
             <form action="/products/delete" method="POST">
                 @method('DELETE')
                 @csrf

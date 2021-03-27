@@ -3,3 +3,10 @@
 3. interface gebind
 4. service provider toegevoegd in app.php
 5.
+
+
+
+
+
+
+bezig met laatste punt van opdracht vier

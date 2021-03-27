@@ -2,13 +2,11 @@
 
 namespace App\Providers;
 
-use App\Service\ProductService;
-use App\Service\ProductServiceInterface;
 use App\Service\TagsService;
 use App\Service\TagsServiceInterface;
 use Illuminate\Support\ServiceProvider;
 
-class ProductServiceProvider extends ServiceProvider
+class TagsServiceProvider extends ServiceProvider
 {
     /**
      * Register services.
@@ -17,7 +15,7 @@ class ProductServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->bind(ProductServiceInterface::class, ProductService::class);
+        $this->app->bind(TagsServiceInterface::class, TagsService::class);
 
     }
 

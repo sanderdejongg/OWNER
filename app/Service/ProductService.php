@@ -3,11 +3,22 @@
 
 namespace App\Service;
 
-
 use App\Product;
+use App\Tag_Product;
+use App\Tags;
 
 class ProductService implements ProductServiceInterface
 {
+
+    public function __construct(){
+        $this->tagsService = app(TagsService::class);
+    }
+
+    public function showProduct(){
+
+        return Product::all();;
+
+    }
 
     public function addProduct($request)
     {
@@ -21,6 +32,7 @@ class ProductService implements ProductServiceInterface
             $product->name = $request->name;
             $product->description = $request->description;
             $product->save();
+            $this->tagsService->updateTags($request->tags, $product->id);
             return true;
         } catch (\Exception $e){
             echo 'something went wrong: ' . $e;

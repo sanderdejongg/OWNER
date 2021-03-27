@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Tag_Product extends Model
+class product_tags extends Model
 {
     //
 }
