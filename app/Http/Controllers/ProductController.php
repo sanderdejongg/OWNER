@@ -2,42 +2,40 @@
 
 namespace App\Http\Controllers;
 
-use App\Product;
+use App\Events\ProductCreated;
+use App\Notifications\ProductComplete;
 use App\Service\ProductServiceInterface;
-use App\Service\TagsServiceInterface;
 use App\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 class ProductController extends Controller
 {
     public function index(ProductServiceInterface $productService)
     {
         $products = $productService->showProduct();
-//        var_dump($products);
-
-        return view('products.index')->with('products', $products);
+        $user = User::find(1);
+        return view('products.index')->with('products', $products)->with('notifications', $user->notifications);
     }
 
     public function store(Request $request, ProductServiceInterface $productService)
     {
-        if ($productService->addProduct($request)){
-            $status = 'Product saved as: ' . $request->name;
-        } else{
-            $status = 'Something went wrong while creating product, please try again.';
+        $productService->addProduct($request);
+        $user_current = User::find(1);
+        $users = User::all();
+        foreach ($users as $user){
+            $user->notify(new ProductComplete($user_current));
         }
-
-        return redirect('/products')->with('status', $status);
+        event(new ProductCreated('product successfully created'));
+        return redirect('/products');
     }
 
     public function delete(Request $request, ProductServiceInterface $productService)
     {
         if ($productService->deleteProduct($request)){
-            $status = 'Product succesfully deleted:';
+            $status = 'Product successfully deleted';
         } else{
             $status = 'Something went wrong while deleting product, please try again.';
         }
-
         return redirect('/products')->with('status', $status);
     }
 }

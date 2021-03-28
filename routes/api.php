@@ -1,5 +1,7 @@
 <?php
 
+use App\Events\ProductCreated;
+use http\Client\Response;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
